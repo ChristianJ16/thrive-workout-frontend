@@ -1,5 +1,5 @@
-import './App.css';
-import Home from './pages/home';
+import './App.css'
+import Home from './pages/Home'
 // import fetchExercises from './services/ExerciseAPI'
 // import { useState, useEffect } from'react'
 
