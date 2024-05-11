@@ -1,12 +1,13 @@
 import './App.css';
+import Header from './components/Header';
 
 function App() {
-  const URL = 'http://localhost:4000/' //backendURL
   return (
     <div className="App">
-  
+      <Header />
     </div>
-  );
+  )
 }
 
 export default App;
+
