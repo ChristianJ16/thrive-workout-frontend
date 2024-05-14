@@ -21,7 +21,7 @@
 // export default fetchExercises
 
 const fetchExercises = async () => {
-  const API_URL = process.env.React_APP_BACKEND_URL + '/exercises'
+  const API_URL = `${process.env.REACT_APP_BACKEND_URL}/exercises`
   // Backend URL from .env file
   try {
     const response = await fetch(API_URL)
@@ -33,3 +33,4 @@ const fetchExercises = async () => {
 }
 
 export default fetchExercises
+
