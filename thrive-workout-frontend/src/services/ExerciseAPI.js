@@ -19,3 +19,17 @@
 // } 
 
 // export default fetchExercises
+
+const fetchExercises = async () => {
+  const API_URL = process.env.React_APP_BACKEND_URL + '/exercises'
+  // Backend URL from .env file
+  try {
+    const response = await fetch(API_URL)
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.log('failed to fetch exercises ', error)
+  }
+}
+
+export default fetchExercises
