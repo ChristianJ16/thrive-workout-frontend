@@ -1,5 +1,6 @@
 import './App.css'
 import Home from './pages/Home'
+
 // import fetchExercises from './services/ExerciseAPI'
 // import { useState, useEffect } from'react'
 
@@ -17,6 +18,7 @@ function App() {
   return (
     <div className="App">
       <Home />
+      
     </div>
   )
 }

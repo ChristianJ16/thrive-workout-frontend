@@ -1,8 +1,13 @@
+import ExcerciseCard from "../components/ExerciseCard"
+
 const Home = () => {
+    
     return (
-        <div>
-            <h1>Home</h1>
-        </div>
-    )
+        <div className="Home">
+            <ExcerciseCard />
+         </div>
+        
+        )
+    
 }
 export default Home
