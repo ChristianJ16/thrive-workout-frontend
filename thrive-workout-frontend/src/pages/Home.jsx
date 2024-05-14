@@ -1,11 +1,11 @@
 import ExcerciseCard from "../components/ExerciseCard"
 
-const Home = () => {
+const Home = ({ exercises }) => {
     
     return (
         <div className="Home">
-            <ExcerciseCard />
-         </div>
+            <ExcerciseCard exercises={exercises} />
+        </div>
         
         )
     
