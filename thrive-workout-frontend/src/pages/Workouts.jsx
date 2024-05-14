@@ -17,7 +17,10 @@ const Workouts = ({ workouts, onUpdateWorkout, onDeleteWorkout }) => {
 
     const handleEditWorkout = (workout) => {
         navigate(`/editWorkout/${workout.name}`, {state: { workout }})
+        // passed state 
+        //workout object is passed to EditWorkout component so that it can be edited
     }
+    
     return (
         <div className="Workouts" style={{ padding: "20px" }}>
             <h1>My Workouts</h1>

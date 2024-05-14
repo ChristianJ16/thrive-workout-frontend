@@ -1,10 +1,10 @@
 import { useState, useEffect } from'react'
 import fetchExercises from '../services/ExerciseAPI'
 import { useLocation } from 'react-router-dom'
-// hook to get the state passed from Workouts component in EditWorkout.jsx
+// hook to get the state passed from Workouts component 
 const EditWorkout = ({ onUpdateWorkout }) => {
   const location = useLocation()
-  const { workout } = location.state
+  const { workout } = location.state // retrieve workout object passed from state in the Workouts component page
   const [workoutName, setWorkoutName] = useState(workout.name)
   const [selectedExercises, setSelectedExercises] = useState(workout.exercises)
   const [exercises, setExercises] = useState([])
@@ -92,3 +92,5 @@ const EditWorkout = ({ onUpdateWorkout }) => {
 }
 
 export default EditWorkout
+
+// change so that after editing it goes back to the workout info page
