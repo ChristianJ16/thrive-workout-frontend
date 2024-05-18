@@ -1,20 +1,37 @@
-import React from "react"
-import testData from "../pages/testData"
+import { useState, useEffect } from "react"
+import fetchExercises from "../services/ExerciseAPI"
 
 const CardName = ({ index }) => {
-  const item = testData[index];
+  const [exercise, setExercise] = useState(null)
 
-  if (!item) {
-    return <div>No item found</div>;
+  useEffect(() => {
+    const fetchExerciseData = async () => {
+      try {
+        const exercises = await fetchExercises()
+        setExercise(exercises[index])
+      } catch (error) {
+        console.error("Error fetching exercise data:", error)
+      }
+    }
+
+    fetchExerciseData()
+  }, [index])
+
+  if (!exercise) {
+    return <div>Loading...</div>
   }
 
   return (
     <div>
-      <h2 style={{
-        fontSize: "15px",
-        display: "flex",
-        justifyContent: "center",
-      }} >{item.name}</h2>
+      <h2
+        style={{
+          fontSize: "15px",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        {exercise.name}
+      </h2>
     </div>
   )
 }
