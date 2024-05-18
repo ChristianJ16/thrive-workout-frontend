@@ -23,8 +23,6 @@ const Header = (props) => {
                                 {link}
                             </Link>
                         )
-                    }else{
-                        return {}
                     }
 
 
@@ -42,6 +40,7 @@ const Header = (props) => {
 
                 {/* wrap in link to UserSettings */}
                 <FontAwesomeIcon icon={ faGear } size="xl"  />
+
             </div>
                   
         </header>
