@@ -1,10 +1,16 @@
 import { useEffect, useState } from 'react'
 import fetchExercises from '../services/ExerciseAPI'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faDumbbell, faStopwatch20, faHeartPulse, faPersonRunning, faHeart, faPersonBiking, faHeadphones, faWeight } from "@fortawesome/free-solid-svg-icons" 
+import './styling/AddWorkout.scss'
+
 const AddWorkout = ({ onAddWorkout }) => {
     const [workoutName, setWorkoutName] = useState('')
     const [selectedExercises, setSelectedExercises] = useState([])
     const [exercises, setExercises] = useState([])
+    const [selectedIcon, setSelectedIcon] = useState(null)
 
+    const icons = [faDumbbell, faStopwatch20, faHeartPulse, faPersonRunning, faHeart, faPersonBiking, faHeadphones, faWeight]
     useEffect(() => {
         const loadExercises = async () => {
             try {
@@ -32,7 +38,8 @@ const AddWorkout = ({ onAddWorkout }) => {
     const handleSave = () => {
         const newWorkout = {
             name: workoutName,
-            exercises: selectedExercises
+            exercises: selectedExercises,
+            icon: selectedIcon,
         }
         console.log('Saving workout:', newWorkout)
         onAddWorkout(newWorkout)
@@ -53,6 +60,19 @@ const AddWorkout = ({ onAddWorkout }) => {
                         padding: "5px",
                         margin: "10px 0",
                     }} />
+                <div>
+                    <h3> Select an Icon: </h3>
+                    {icons.map((icon, index) => (
+                        <label key={index} style={{margin: "0 10px"}}>
+                            <input
+                                type="radio" 
+                                value={icon.iconName}
+                                checked={selectedIcon === icon}
+                                onChange={() => setSelectedIcon(icon)}/>
+                            <FontAwesomeIcon icon={icon} size="4x" />
+                        </label>
+                    ))}
+                </div>
                 <button 
                     onClick={handleSave} 
                     style={{ 
@@ -90,3 +110,4 @@ const AddWorkout = ({ onAddWorkout }) => {
 }
 export default AddWorkout
 
+// "Only one radio button in a given group can be selected at the same time. Radio buttons are typically rendered as small circles, which are filled or highlighted when selected." -mdn web docs

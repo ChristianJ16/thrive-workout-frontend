@@ -38,7 +38,11 @@ const Workouts = ({ workouts, onUpdateWorkout, onDeleteWorkout }) => {
             </Link>
             <div className="workoutCardsContainer" style={{ display: "flex", flexWrap: "wrap" }}>
                 {workouts.map((workout, index) => (
-                    <WorkoutCard key={index} workout={workout} onSelectWorkout={handleSelectWorkout} />
+                    <WorkoutCard 
+                    key={index} 
+                    workout={workout} 
+                    onSelectWorkout={handleSelectWorkout} 
+                    />
                 ))}
             </div>
             {selectedWorkout && (

@@ -27,12 +27,12 @@ function App() {
     }
 
     const handleUpdateWorkout = (updatedWorkout) => {
-      setWorkouts(workouts.map(workout => workout.name === updatedWorkout.name ? updatedWorkout : workout))
-      navigate('/workouts')
-  }
+        setWorkouts(workouts.map(workout => workout.id === updatedWorkout.id ? updatedWorkout : workout))
+        navigate('/workouts')
+    }
 
     const handleDeleteWorkout = (workoutToDelete) => {
-        setWorkouts(workouts.filter(workout => workout !== workoutToDelete))
+        setWorkouts(workouts.filter(workout => workout.id !== workoutToDelete.id))
     }
 
     const handleShowSearch = () => {
@@ -46,7 +46,6 @@ function App() {
                 name={ <>THRIVE<span>workout</span></> } 
                 links={["workouts"]}
                 showSearch={handleShowSearch} />
-
             <Routes>
                 <Route path="/" element={<Home exercises={exercises} />} />
                 <Route 
@@ -56,13 +55,10 @@ function App() {
                             workouts={workouts}
                             onUpdateWorkout={handleUpdateWorkout}
                             onDeleteWorkout={handleDeleteWorkout}
-                        />
-                    } 
-                />
+                        />} />
                 <Route 
                     path="/addWorkout" 
-                    element={<AddWorkout onAddWorkout={handleAddWorkout} />} 
-                />
+                    element={<AddWorkout onAddWorkout={handleAddWorkout} />} />
                 <Route path="/editWorkout/:id" element={<EditWorkout onUpdateWorkout={handleUpdateWorkout} />} />
             </Routes>
             
