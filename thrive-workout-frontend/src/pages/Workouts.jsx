@@ -41,7 +41,7 @@ const Workouts = ({ workouts, onUpdateWorkout, onDeleteWorkout }) => {
                     <WorkoutCard 
                     key={index} 
                     workout={workout} 
-                    onSelectWorkout={handleSelectWorkout} 
+                    onSelectWorkout={handleSelectWorkout}  
                     />
                 ))}
             </div>
