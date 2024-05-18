@@ -12,7 +12,9 @@
     border-bottom: 1px solid #ccc;
     height: 112px;
     padding: 0 35px;
-
+a{
+    text-decoration: none;
+    color: #000;
     h1{
         // margin: 12px 20px 0;
         font-size: 50px;
@@ -31,6 +33,7 @@
         }
         text-transform: uppercase;
     }
+}
 
     &--content-right{
         

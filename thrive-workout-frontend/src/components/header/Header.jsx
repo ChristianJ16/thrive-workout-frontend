@@ -11,7 +11,7 @@ const Header = (props) => {
     const location = useLocation();
     return (
         <header className="tw-main-header">
-            <h1>{props.name}</h1>
+            <a href="/"><h1>{props.name}</h1></a>
            
             <div className="tw-main-header--content-right">
                 <nav>
@@ -25,14 +25,13 @@ const Header = (props) => {
                         )
                     }
 
-
                 })}
                 </nav>
 
-                { location.pathname === "/" && 
-                   <button type='button'>
-                        <FontAwesomeIcon icon={ faMagnifyingGlass } size="2x"  /> 
-                    </button> }
+                
+                <button type='button'>
+                    <FontAwesomeIcon icon={ faMagnifyingGlass } size="2x"  /> 
+                </button>
 
                 <div className="tw-main-header--profile-image">
                 <FontAwesomeIcon icon={ faCircleUser } size="4x"  />
