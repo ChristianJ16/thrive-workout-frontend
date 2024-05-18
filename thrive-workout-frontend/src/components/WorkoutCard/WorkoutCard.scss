@@ -1,0 +1,14 @@
+.WorkoutCard {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.WorkoutCard:hover {
+  transform: translateY(-5px);
+}

@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect, useState } from "react"
-
+import './WorkoutCard.scss'
 const WorkoutCard = ({ workout, onSelectWorkout }) => {
     const [icon, setIcon] = useState(workout.icon)
 
@@ -9,15 +9,7 @@ const WorkoutCard = ({ workout, onSelectWorkout }) => {
     }, [workout])
 
     return (
-        <div className="WorkoutCard" onClick={() => onSelectWorkout(workout)} style={{
-            border: "1px solid #ccc",
-            borderRadius: "8px",
-            padding: "10px",
-            margin: "10px",
-            cursor: "pointer",
-            width: "200px",
-            textAlign: "center"
-        }}>
+        <div className="WorkoutCard" onClick={() => onSelectWorkout(workout)}>
             <h3>{workout.name}</h3>
             <FontAwesomeIcon icon={icon} size="8x" style={{ color: "rgb(87 106 187)"}} />
             {workout.exercises && workout.exercises.map((exercise, index) => (
