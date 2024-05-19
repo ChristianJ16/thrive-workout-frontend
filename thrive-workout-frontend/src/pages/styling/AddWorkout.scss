@@ -1,6 +1,4 @@
-.body {
-  background-color: rgb(21, 30, 63);
-}
+
 .addWorkout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -89,7 +87,6 @@
       grid-area: exerciseSidebar;
       width: 70%;
       justify-self: end;
-      
       background-color: rgb(10, 15, 57);
       padding: 0 20px 10px;
       color: white;
@@ -126,6 +123,7 @@
           // flex: 1;
           overflow-y: auto;
           color: rgb(105, 172, 216);
+          text-transform: capitalize;
 
           div {
               margin-bottom: 10px;
