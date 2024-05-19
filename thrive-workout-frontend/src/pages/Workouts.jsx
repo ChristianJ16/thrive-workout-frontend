@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import WorkoutCard from '../components/WorkoutCard'
+import WorkoutCard from '../components/WorkoutCard/WorkoutCard'
 import WorkoutInfo from '../components/WorkoutInfo'
 import { Link, useNavigate } from 'react-router-dom'
 import './styling/Workouts.scss'
@@ -40,9 +40,9 @@ const Workouts = ({ workouts, onUpdateWorkout, onDeleteWorkout }) => {
             <div className="workoutCardsContainer" style={{ display: "flex", flexWrap: "wrap" }}>
                 {workouts.map((workout, index) => (
                     <WorkoutCard 
-                        key={index} 
-                        workout={workout} 
-                        onSelectWorkout={handleSelectWorkout}  
+                    key={index} 
+                    workout={workout} 
+                    onSelectWorkout={handleSelectWorkout}  
                     />
                 ))}
             </div>
