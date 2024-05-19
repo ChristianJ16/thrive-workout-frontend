@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import WorkoutCard from '../components/WorkoutCard/WorkoutCard'
+import WorkoutCard from '../components/WorkoutCard'
 import WorkoutInfo from '../components/WorkoutInfo'
 import { Link, useNavigate } from 'react-router-dom'
 import './styling/Workouts.scss'
