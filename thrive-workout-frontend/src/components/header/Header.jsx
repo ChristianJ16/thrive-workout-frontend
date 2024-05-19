@@ -12,7 +12,7 @@ const Header = (props) => {
     return (
         <header className="tw-main-header">
             <a href="/"><h1>{props.name}</h1></a>
-           
+        
             <div className="tw-main-header--content-right">
                 <nav>
                 {props.links.map( (link, i) => {
