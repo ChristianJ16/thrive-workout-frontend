@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
+import ExcerciseModal from "./ExerciseModal"
 
 const WorkoutInfo = ({ workout, onClose, onDeleteWorkout }) => {
     const navigate = useNavigate()
+    const [selectedExercise, setSelectedExercise] = useState(null)
 
     const handleDelete = () => {
         onDeleteWorkout(workout)
@@ -9,6 +12,15 @@ const WorkoutInfo = ({ workout, onClose, onDeleteWorkout }) => {
     }
     const handleEdit = () => {
         navigate(`/editWorkout/${workout.name}`, {state: { workout }})
+    }
+
+    const handleExerciseClick = (exercise) => {
+        setSelectedExercise(exercise)
+        console.log("selectedExercise", selectedExercise)
+    }
+
+    const handleCloseModal = () => {
+        setSelectedExercise(null)
     }
 
     return (
@@ -42,7 +54,11 @@ const WorkoutInfo = ({ workout, onClose, onDeleteWorkout }) => {
                         <h3>Exercises:</h3>
                         {workout.exercises && workout.exercises.length > 0 ? (
                             workout.exercises.map((exercise,index) => (
-                                <div key={index}>{exercise}</div>
+                                <div 
+                                    key={index} 
+                                    onClick={() => handleExerciseClick(exercise)} 
+                                    style={{ cursor: "pointer", textDecoration: "underline", color: "blue" }}
+                                >{exercise}</div>
                             ))
                         ) : (
                             <p>No Exercises Added...</p>
@@ -58,7 +74,13 @@ const WorkoutInfo = ({ workout, onClose, onDeleteWorkout }) => {
                         borderRadius: "5px",
                         cursor: "pointer",
                     }}> Edit Workout </button>
+                    {selectedExercise && (
+                        <ExcerciseModal
+                        exercise={selectedExercise}
+                        onClose={handleCloseModal} />
+                    )}
                 </div>
     )
 }
 export default WorkoutInfo
+
