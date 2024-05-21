@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from 'react' 
-import fetchExercises from '../services/ExerciseAPI'
+import fetchExercises from '../../services/ExerciseAPI'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faDumbbell, faStopwatch20, faHeartPulse, faPersonRunning, faHeart, faPersonBiking, faHeadphones, faWeight } from "@fortawesome/free-solid-svg-icons" 
-import './styling/AddWorkout.scss'
+import './AddWorkout.scss'
 import  gsap  from 'gsap' 
 import { useGSAP } from '@gsap/react'
 

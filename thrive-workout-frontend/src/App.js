@@ -3,9 +3,9 @@ import './App.css'
 import Home from './pages/Home'
 import fetchExercises from './services/ExerciseAPI'
 import { useState, useEffect } from 'react'
-import Workouts from './pages/Workouts'
-import AddWorkout from './pages/AddWorkout'
-import EditWorkout from './pages/EditWorkout'
+import Workouts from './pages/Workouts/Workouts'
+import AddWorkout from './pages/Add-Workout/AddWorkout'
+import EditWorkout from './pages/Edit-Workout/EditWorkout'
 import Header from './components/header/Header'
 
 function App() {
