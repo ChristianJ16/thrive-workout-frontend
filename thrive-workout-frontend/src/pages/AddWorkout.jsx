@@ -8,7 +8,6 @@ import { useGSAP } from '@gsap/react'
 
 
 
-
 const AddWorkout = ({ onAddWorkout }) => {
     const [workoutName, setWorkoutName] = useState('')
     const [selectedExercises, setSelectedExercises] = useState([])
@@ -16,6 +15,7 @@ const AddWorkout = ({ onAddWorkout }) => {
     const [selectedIcon, setSelectedIcon] = useState(null)
     const [filteredExercises, setFilteredExercises] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
+    const [isFormValid, setIsFormValid] = useState(false)
 
     const icons = [faDumbbell, faStopwatch20, faHeartPulse, faPersonRunning, faHeart, faPersonBiking, faHeadphones, faWeight]
 
@@ -48,6 +48,10 @@ const AddWorkout = ({ onAddWorkout }) => {
         )
     }, [exercises, searchTerm])
 
+    useEffect(() => {
+        setIsFormValid(workoutName && selectedIcon && selectedExercises.length > 0)
+    }, [workoutName, selectedIcon, selectedExercises])
+
     // handle changing the selected exercises 
     const handleExerciseChange = (e) => {
         const { value, checked } = e.target
@@ -60,6 +64,10 @@ const AddWorkout = ({ onAddWorkout }) => {
 
     // add a new workout by calling the 'onAddWorkout' function passed as a prop from parent 
     const handleSave = () => {
+        if (!isFormValid) {
+            console.log('Form is invalid') // maybe show a message that says to fill in all feilds before saving
+            return
+        }
         const newWorkout = {
             name: workoutName,
             exercises: selectedExercises,
@@ -83,7 +91,7 @@ const AddWorkout = ({ onAddWorkout }) => {
             opacity: 1,
             x: 0, // final position 
             duration: 1, // 1 second
-        });
+        })
 
         // animate exercise list whith staggered effect 
         gsap.fromTo(exerciseListRef.current.children, {
@@ -135,7 +143,7 @@ const AddWorkout = ({ onAddWorkout }) => {
                         ))}
                     </div>
                 </div>
-                <button onClick={handleSave}> Save </button>
+                <button onClick={handleSave} disabled={!isFormValid}> Save </button>
             </div>
             <div className='exerciseSidebar' ref={exerciseSidebarRef}>
                 <h3> Select Exercises: </h3>
