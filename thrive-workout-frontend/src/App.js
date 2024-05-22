@@ -8,6 +8,8 @@ import AddWorkout from './pages/AddWorkout'
 import EditWorkout from './pages/EditWorkout'
 import Header from './components/header/Header'
 
+import Register from './components/Register'
+
 function App() {
     const [exercises, setExercises] = useState([])
     const [workouts, setWorkouts] = useState([])
@@ -46,6 +48,9 @@ function App() {
                 name={ <>THRIVE<span>workout</span></> } 
                 links={["workouts"]}
                 showSearch={handleShowSearch} />
+
+            <Register />
+
             <Routes>
                 <Route path="/" element={<Home exercises={exercises} />} />
                 <Route 
