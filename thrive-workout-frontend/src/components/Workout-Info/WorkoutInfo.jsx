@@ -26,6 +26,7 @@ const WorkoutInfo = ({ workout, onClose, onDeleteWorkout }) => {
 
     return (
         <div className="WorkoutInfo">
+            <div className="divElements">
                 <button onClick={onClose} className="closeBtn">X</button>
                 <h2>Workout Details</h2>
                 <h3 style={{ fontSize: "22px", margin: "10px 0" }}>{workout.name}</h3>
@@ -51,6 +52,7 @@ const WorkoutInfo = ({ workout, onClose, onDeleteWorkout }) => {
                     onClose={handleCloseModal} />
                 )}
             </div>
+        </div>
     )
 }
 export default WorkoutInfo
