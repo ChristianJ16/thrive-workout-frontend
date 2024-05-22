@@ -10,7 +10,7 @@ const ExcerciseModal = ({ exercise, onClose }) => {
   }, [])
 
   if (!exercise || !exercise.name) {
-    return null; 
+    return null
   }
 
   return (

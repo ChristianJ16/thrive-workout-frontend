@@ -1,22 +1,6 @@
-import { useState, useEffect } from "react"
-import fetchExercises from "../services/ExerciseAPI"
+import React from "react"
 
-const CardImage = ({ index }) => {
-  const [exercise, setExercise] = useState(null)
-
-  useEffect(() => {
-    const fetchExerciseData = async () => {
-      try {
-        const exercises = await fetchExercises()
-        setExercise(exercises[index])
-      } catch (error) {
-        console.error("Error fetching exercise data:", error)
-      }
-    }
-
-    fetchExerciseData()
-  }, [index])
-
+const CardImage = ({ exercise }) => {
   if (!exercise) {
     return <div>Loading...</div>
   }
@@ -24,7 +8,7 @@ const CardImage = ({ index }) => {
   return (
     <div>
       <img
-        style={{ width: "200px" }}
+        style={{ width: "200px", height: "auto", objectFit: "cover" }}
         src={exercise.gifUrl}
         alt={exercise.name}
       />
