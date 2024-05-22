@@ -1,5 +1,5 @@
 import { Route, Routes, useNavigate } from 'react-router'
-import './App.css'
+import './App.scss'
 import Home from './pages/Home'
 import fetchExercises from './services/ExerciseAPI'
 import { useState, useEffect } from 'react'
