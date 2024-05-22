@@ -1,0 +1,28 @@
+.Workouts {
+  padding: 20px;
+
+  button {
+    margin: 10px; 
+    padding: 10px;
+    background-color: navy;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer 
+  }
+
+  .workoutCardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .deleteBtn {
+    margin-bottom: 20px;
+    // padding: 10px;
+    // background-color: navy;
+    // color: white;
+    // border: none;
+    // border-radius: 5px;
+    // cursor: pointer;
+  }
+}

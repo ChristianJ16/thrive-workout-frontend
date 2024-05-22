@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import fetchExercises from '../services/ExerciseAPI'
+import fetchExercises from '../../services/ExerciseAPI'
 import { useLocation } from 'react-router-dom'
 // hook to get the state passed from Workouts component 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faDumbbell, faStopwatch20, faHeartPulse, faPersonRunning, faHeart, faPersonBiking, faHeadphones, faWeight } from "@fortawesome/free-solid-svg-icons" 
+import "./EditWorkout.scss"
 
 const EditWorkout = ({ onUpdateWorkout }) => {
     const location = useLocation() // used useLocation hook to access the location object passed from the Workouts component page

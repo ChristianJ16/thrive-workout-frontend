@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import WorkoutCard from '../components/WorkoutCard/WorkoutCard'
-import WorkoutInfo from '../components/WorkoutInfo'
+import WorkoutCard from '../../components/WorkoutCard/WorkoutCard'
+import WorkoutInfo from '../../components/Workout-Info/WorkoutInfo'
 import { Link, useNavigate } from 'react-router-dom'
-import './styling/Workouts.scss'
+import './Workouts.scss'
 
 const Workouts = ({ workouts, onUpdateWorkout, onDeleteWorkout }) => {
     const [selectedWorkout, setSelectedWorkout] = useState(null)
@@ -23,21 +23,12 @@ const Workouts = ({ workouts, onUpdateWorkout, onDeleteWorkout }) => {
     }
     
     return (
-        <div className="Workouts" style={{ padding: "20px" }}>
+        <div className="Workouts">
             <h1>My Workouts</h1>
             <Link to="/addWorkout">
-                <button 
-                    style={{ 
-                        margin: "10px", 
-                        padding: "10px", 
-                        backgroundColor: "navy", 
-                        color: "white", 
-                        border: "none", 
-                        borderRadius: "5px", 
-                        cursor: "pointer" 
-                    }}>Add New Workout</button>
+                <button>Add New Workout</button>
             </Link>
-            <div className="workoutCardsContainer" style={{ display: "flex", flexWrap: "wrap" }}>
+            <div className="workoutCardsContainer">
                 {workouts.map((workout, index) => (
                     <WorkoutCard 
                     key={index} 
@@ -55,15 +46,7 @@ const Workouts = ({ workouts, onUpdateWorkout, onDeleteWorkout }) => {
                 />
             )}
             {selectedWorkout && (
-                <button onClick={() => handleEditWorkout(selectedWorkout)}  style={{
-                    marginTop: "20px",
-                    padding: "10px",
-                    backgroundColor: "navy",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer",
-                }}> Edit Workout </button>
+                <button onClick={() => handleEditWorkout(selectedWorkout)} className='deleteBtn' > Edit Workout </button>
             )}
         </div>
     )

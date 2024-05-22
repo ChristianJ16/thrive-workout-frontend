@@ -1,12 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect, useState } from "react"
 import './WorkoutCard.scss'
+
 const WorkoutCard = ({ workout, onSelectWorkout }) => {
     const [icon, setIcon] = useState(workout.icon)
+    
 
     useEffect(() => {
         setIcon(workout.icon)
     }, [workout])
+    
 
     return (
         <div className="WorkoutCard" onClick={() => onSelectWorkout(workout)}>
