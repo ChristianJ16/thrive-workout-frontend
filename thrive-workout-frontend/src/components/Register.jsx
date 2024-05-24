@@ -1,7 +1,7 @@
 import {Routes, Route} from 'react-router-dom'
 import {useState} from 'react'
 
-import SignUp from '../pages/SignUp'
+import SignUp from '../pages/SignUp/SignUp'
 
 const URL = `${process.env.REACT_APP_BACKEND_URL}/users/`
 
