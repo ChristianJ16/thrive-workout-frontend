@@ -22,7 +22,7 @@ const WorkoutCard = ({ workout, onSelectWorkout }) => {
     return (
         <div className="WorkoutCard" onClick={() => onSelectWorkout(workout)}>
             <h3>{workout.name}</h3>
-            <FontAwesomeIcon icon={icon} size="8x" style={{ color: "rgb(87 106 187)"}} />
+            <FontAwesomeIcon icon={icon} size="8x" />
             {workout.exercises && workout.exercises.map((exercise, index) => (
                 <p key={index}>{exercise.name}</p>
             ))}
