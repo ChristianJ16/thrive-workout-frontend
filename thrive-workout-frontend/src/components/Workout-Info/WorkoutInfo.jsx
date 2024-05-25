@@ -55,29 +55,32 @@ const WorkoutInfo = ({ workout, onClose, onDeleteWorkout }) => {
         <div className="WorkoutInfo">
             <div className="divElements">
                 <button onClick={onClose} className="closeBtn">X</button>
-                <h2>Workout Details</h2>
-                <h3 style={{ fontSize: "22px", margin: "10px 0" }}>{workout.name}</h3>
-                <button onClick={handleDelete}className="deleteBtn">Delete Workout</button>
-                <div> 
-                    <h3>Exercises:</h3>
-                    {workout.exercises && workout.exercises.length > 0 ? (
-                        workout.exercises.map((exercise, index) => (
-                            <div 
-                                key={index} 
-                                onClick={() => handleExerciseClick(exercise)} 
-                                className="exercise"
-                            >{exercise}</div>
-                        ))
-                    ) : (
-                        <p>No Exercises Added...</p>
-                    )}
+                <div className="workoutDetails">
+                    <h2>Workout Details</h2>
+                    <h3 style={{ fontSize: "22px", margin: "10px 0" }}>{workout.name}</h3>
+                    <button onClick={handleDelete}className="deleteBtn">Delete Workout</button>
+                    <div> 
+                        <h3>Exercises:</h3>
+                        {workout.exercises && workout.exercises.length > 0 ? (
+                            workout.exercises.map((exercise, index) => (
+                                <div 
+                                    key={index} 
+                                    onClick={() => handleExerciseClick(exercise)} 
+                                    className="exercise"
+                                >{exercise}</div>
+                            ))
+                        ) : (
+                            <p>No Exercises Added...</p>
+                        )}
+                    </div>
+                    <button onClick={handleEdit} className="editBtn"> Edit Workout </button>
                 </div>
-                <button onClick={handleEdit} className="editBtn"> Edit Workout </button>
-                {selectedExercise && (
-                    <ExerciseModal
-                        exercise={selectedExercise}
-                        onClose={handleCloseModal} />
-                )}
+                    {selectedExercise && (
+                        <ExerciseModal
+                            exercise={selectedExercise}
+                            onClose={handleCloseModal} />
+                    )}
+                
             </div>
         </div>
     )
