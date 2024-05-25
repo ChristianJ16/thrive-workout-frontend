@@ -2,6 +2,7 @@ import { useState } from "react"
 import "./Search.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import { faRightLong } from "@fortawesome/free-solid-svg-icons"
 
 const Search = ({ exerciseData, onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("")
@@ -28,24 +29,30 @@ const Search = ({ exerciseData, onSearch }) => {
   const handleSearchSubmit = async (event) => {
     event.preventDefault()
     onSearch(searchQuery)
+    setAutoFillSuggestions([])
   }
 
   return (
     <form onSubmit={handleSearchSubmit}>
       <div className="input-wrapper">
-      <FontAwesomeIcon icon={ faMagnifyingGlass } className="search-icon"/>
-      <input className="search-input"
-        type="text"
-        value={searchQuery}
-        onChange={handleInputChange}
-        placeholder="Search exercises..."
-      />
-      <button type="submit">Search</button>
+        <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
+        <input className="search-input"
+          type="text"
+          value={searchQuery}
+          onChange={handleInputChange}
+          placeholder="Search exercises..."
+        />
+        <button style={{
+          all: "unset",
+        }}type="submit"><FontAwesomeIcon icon={faRightLong} className="search-arrow"/></button>
       </div>
-      
+
       <ul className="autofill-list">
         {autoFillSuggestions.map((suggestion, index) => (
-          <li className="suggested-list" key={index} onClick={() => setSearchQuery(suggestion.name)}>
+          <li className="suggested-list" key={index} onClick={() => {
+            setSearchQuery(suggestion.name)
+            setAutoFillSuggestions([])
+          }}>
             {suggestion.name}
           </li>
         ))}

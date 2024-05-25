@@ -2,3 +2,34 @@
   display: flex;
   justify-content: center;
 }
+
+.ExerciseCard {
+  border-style: solid;
+  height: 280px;
+  box-shadow: 0px 0px 15px #ddd;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.ExerciseCard:hover {
+  transform: translateY(-5px);
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 260px);
+  justify-content: center;
+  row-gap: 18px;
+  column-gap: 18px;
+  margin-top: 20px;
+}
+
+.load-more-button {
+  all: unset;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.load-more-button:hover {
+  color: navy;
+}

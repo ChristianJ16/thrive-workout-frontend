@@ -55,26 +55,15 @@ const ExcerciseCard = () => {
   return (
     <div style={{ position: "relative" }}>
       <div className="search-bar">
-      <Search exerciseData={exerciseData} onSearch={handleSearch} />
+        <Search exerciseData={exerciseData} onSearch={handleSearch} />
       </div>
       <div
         className="cardGrid"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 260px)",
-          justifyContent: "center",
-          rowGap: "18px",
-          columnGap: "18px",
-          marginTop: "20px",
-        }}
       >
         {searchResults.slice(0, totalDisplayCount).map((item, index) => (
           <div
             className="ExerciseCard"
             key={item.id}
-            style={{
-              borderStyle: "solid",
-            }}
           >
             <section
               style={{
@@ -88,6 +77,8 @@ const ExcerciseCard = () => {
                   cursor: "pointer",
                   textTransform: "capitalize",
                   textAlign: "center",
+                  width: "100%",
+                  // height:"280px",
                 }}
                 onClick={() => handleImageClick(index)}
               >
@@ -106,7 +97,8 @@ const ExcerciseCard = () => {
           marginBottom: "20px",
         }}
       >
-        <button onClick={handleLoadMore}>Load More</button>
+        <button className="load-more-button"
+          onClick={handleLoadMore}>Load More</button>
       </div>
       {selectedExercise && (
         <ExcerciseModal
