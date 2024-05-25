@@ -44,3 +44,18 @@
 .search-icon {
   color: black;
 }
+
+.no-results {
+  display: flex;
+  justify-content: center;
+}
+
+.search-arrow {
+  color: rgb(217, 217, 217);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.search-arrow:hover{
+  color: rgb(181, 181, 181),
+}
