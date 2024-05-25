@@ -5,19 +5,28 @@ import { faDumbbell, faStopwatch20, faHeartPulse, faPersonRunning, faHeart, faPe
 import './AddWorkout.scss'
 import  gsap  from 'gsap' 
 import { useGSAP } from '@gsap/react'
+import saveWorkout from '../../services/saveWorkout'
 
+const icons = [
+    { iconName: 'dumbbell', icon: faDumbbell },
+    { iconName: 'stopwatch20', icon: faStopwatch20 },
+    { iconName: 'heartPulse', icon: faHeartPulse },
+    { iconName: 'personRunning', icon: faPersonRunning },
+    { iconName: 'heart', icon: faHeart },
+    { iconName: 'personBiking', icon: faPersonBiking },
+    { iconName: 'headphones', icon: faHeadphones },
+    { iconName: 'weight', icon: faWeight }
+]
 
 
 const AddWorkout = ({ onAddWorkout }) => {
     const [workoutName, setWorkoutName] = useState('')
     const [selectedExercises, setSelectedExercises] = useState([])
     const [exercises, setExercises] = useState([])
-    const [selectedIcon, setSelectedIcon] = useState(null)
+    const [selectedIcon, setSelectedIcon] = useState('')
     const [filteredExercises, setFilteredExercises] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
     const [isFormValid, setIsFormValid] = useState(false)
-
-    const icons = [faDumbbell, faStopwatch20, faHeartPulse, faPersonRunning, faHeart, faPersonBiking, faHeadphones, faWeight]
 
     
     // useRef hook to create a reference to elemnts
@@ -62,19 +71,22 @@ const AddWorkout = ({ onAddWorkout }) => {
         }
     }
 
+
     // add a new workout by calling the 'onAddWorkout' function passed as a prop from parent 
-    const handleSave = () => {
+    const handleSave = async () => {
         if (!isFormValid) {
-            console.log('Form is invalid') // maybe show a message that says to fill in all feilds before saving
+            console.error('Form is invalid')
             return
         }
         const newWorkout = {
             name: workoutName,
             exercises: selectedExercises,
-            icon: selectedIcon,
+            icon: selectedIcon
         }
-        console.log('Saving workout:', newWorkout)
-        onAddWorkout(newWorkout)
+        const savedWorkout = await saveWorkout(newWorkout)
+        if (savedWorkout) {
+            onAddWorkout(savedWorkout)
+        }
     }
 
     
@@ -132,18 +144,20 @@ const AddWorkout = ({ onAddWorkout }) => {
                     <h3> Select an Icon: </h3>
                     <div className='icons'>
                         {icons.map((icon, index) => (
-                            <label key={index} className={selectedIcon === icon ? 'selected' : ''}>
+                            <label key={index} className={selectedIcon === icon.iconName ? 'selected' : ''}>
                                 <input
                                     type="radio" 
+                                    name="icon"
                                     value={icon.iconName}
-                                    checked={selectedIcon === icon}
-                                    onChange={() => setSelectedIcon(icon)}/>
-                                <FontAwesomeIcon icon={icon} size="4x" />
+                                    checked={selectedIcon === icon.iconName}
+                                    onChange={e => setSelectedIcon(e.target.value)}
+                                />
+                                <FontAwesomeIcon icon={icon.icon} size="4x" />
                             </label>
                         ))}
                     </div>
                 </div>
-                <button onClick={handleSave} disabled={!isFormValid}> Save </button>
+                <button onClick={handleSave} disabled={!isFormValid}>Save</button>
             </div>
             <div className='exerciseSidebar' ref={exerciseSidebarRef}>
                 <h3> Select Exercises: </h3>

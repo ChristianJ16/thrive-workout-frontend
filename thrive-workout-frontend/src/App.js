@@ -1,14 +1,20 @@
 import { Route, Routes, useNavigate } from 'react-router'
-import './App.scss'
-import Home from './pages/Home'
-import fetchExercises from './services/ExerciseAPI'
 import { useState, useEffect } from 'react'
+
+import './App.scss'
+
+import Home from './pages/Home'
 import Workouts from './pages/Workouts/Workouts'
 import AddWorkout from './pages/Add-Workout/AddWorkout'
 import EditWorkout from './pages/Edit-Workout/EditWorkout'
 import Header from './components/header/Header'
-
 import Register from './components/Register'
+
+// Imports for API calls
+import fetchExercises from './services/ExerciseAPI'
+import fetchWorkouts from './services/fetchWorkouts'
+import updateWorkout from './services/updateWorkout'
+import deleteWorkout from './services/deleteWorkout'
 
 function App() {
     const [exercises, setExercises] = useState([])
@@ -23,18 +29,36 @@ function App() {
         loadExercises()
     }, [])
 
+    useEffect(() => {
+        const loadWorkouts = async () => {
+            const workoutsData = await fetchWorkouts()
+            setWorkouts(workoutsData)
+        }
+        loadWorkouts()
+    }, [])
+    
+
     const handleAddWorkout = (newWorkout) => {
         setWorkouts([...workouts, newWorkout])
         navigate('/workouts') // Navigate to the workouts page after saving
     }
 
-    const handleUpdateWorkout = (updatedWorkout) => {
-        setWorkouts(workouts.map(workout => workout.id === updatedWorkout.id ? updatedWorkout : workout))
-        navigate('/workouts')
+    const handleUpdateWorkout = async (updatedWorkout) => {
+        const result = await updateWorkout(updatedWorkout._id, updatedWorkout)
+        if (result) {
+            setWorkouts(workouts.map(w => w._id === result._id ? result : w))
+            navigate('/workouts')
+        }
     }
 
-    const handleDeleteWorkout = (workoutToDelete) => {
-        setWorkouts(workouts.filter(workout => workout.id !== workoutToDelete.id))
+    const handleDeleteWorkout = async (workout) => {
+        const result = await deleteWorkout(workout._id)
+        if (result) {
+            console.log('Deleted workout:', result)
+            setWorkouts(workouts.filter(w => w._id !== workout._id))
+        } else { 
+            console.log('Failed to delete workout')
+        }
     }
 
     const handleShowSearch = () => {

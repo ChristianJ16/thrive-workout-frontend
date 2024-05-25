@@ -29,13 +29,19 @@ const Workouts = ({ workouts, onUpdateWorkout, onDeleteWorkout }) => {
                 <button>Add New Workout</button>
             </Link>
             <div className="workoutCardsContainer">
-                {workouts.map((workout, index) => (
-                    <WorkoutCard 
-                    key={index} 
-                    workout={workout} 
-                    onSelectWorkout={handleSelectWorkout}  
-                    />
-                ))}
+                {workouts.map((workout, index) => {
+                    if (!workout || !workout.name || !workout.exercises) {
+                        console.log('invalid workout data', workout)
+                        return <div key={index}>Invalid Workout Data</div>
+                    }
+                    return (
+                        <WorkoutCard 
+                            key={index} 
+                            workout={workout} 
+                            onSelectWorkout={handleSelectWorkout}  
+                        />
+                    )
+                })}
             </div>
             {selectedWorkout && (
                 <WorkoutInfo
