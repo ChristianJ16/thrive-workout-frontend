@@ -7,8 +7,15 @@
   width: 200px;
   text-align: center;
   transition: transform 0.3s ease;
-}
+  &:hover {
+    transform: translateY(-5px);
+  }
 
-.WorkoutCard:hover {
-  transform: translateY(-5px);
+  h3 {
+    text-transform: capitalize;
+  }
+
+  svg {
+    color: rgb(87 106 187);
+  }
 }
