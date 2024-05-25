@@ -4,6 +4,7 @@ import "./ExerciseModal.scss"
 const ExcerciseModal = ({ exercise, onClose }) => {
   useEffect(() => {
     document.body.style.overflow = 'hidden'
+    console.log("Modal Exercise:", exercise)
     return () => {
       document.body.style.overflow = 'unset'
     }
