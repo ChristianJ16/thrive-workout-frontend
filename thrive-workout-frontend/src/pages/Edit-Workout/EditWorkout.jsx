@@ -1,20 +1,32 @@
 import { useState, useEffect } from 'react'
 import fetchExercises from '../../services/ExerciseAPI'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 // hook to get the state passed from Workouts component 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faDumbbell, faStopwatch20, faHeartPulse, faPersonRunning, faHeart, faPersonBiking, faHeadphones, faWeight } from "@fortawesome/free-solid-svg-icons" 
 import "./EditWorkout.scss"
 
+
+const icons = [
+    { iconName: 'dumbbell', icon: faDumbbell },
+    { iconName: 'stopwatch20', icon: faStopwatch20 },
+    { iconName: 'heartPulse', icon: faHeartPulse },
+    { iconName: 'personRunning', icon: faPersonRunning },
+    { iconName: 'heart', icon: faHeart },
+    { iconName: 'personBiking', icon: faPersonBiking },
+    { iconName: 'headphones', icon: faHeadphones },
+    { iconName: 'weight', icon: faWeight }
+]
+
 const EditWorkout = ({ onUpdateWorkout }) => {
+    const navigate = useNavigate() 
     const location = useLocation() // used useLocation hook to access the location object passed from the Workouts component page
     const { workout } = location.state // destructured the workout object from location.state and assigned it to workout variable
     const [workoutName, setWorkoutName] = useState(workout.name) // initialized state with workout name
     const [selectedExercises, setSelectedExercises] = useState(workout.exercises) // initialized state with workout exercises
     const [exercises, setExercises] = useState([])
-    const [selectedIcon, setSelectedIcon] = useState(workout.icon)
-
-    const icons = [faDumbbell, faStopwatch20, faHeartPulse, faPersonRunning, faHeart, faPersonBiking, faHeadphones, faWeight]
+    const [selectedIcon, setSelectedIcon] = useState(icons.find(icon => icon.iconName === workout.icon)?.iconName)
+    
 
     useEffect(() => {
         const loadExercises = async () => {
@@ -28,6 +40,10 @@ const EditWorkout = ({ onUpdateWorkout }) => {
         }
         loadExercises()
     }, [])
+
+    useEffect(() => {
+        setSelectedIcon(workout.icon)
+    }, [workout.icon])
 
     const handleExerciseChange = (e) => {
         const { value, checked } = e.target
@@ -46,6 +62,7 @@ const EditWorkout = ({ onUpdateWorkout }) => {
             icon: selectedIcon,
         }
         onUpdateWorkout(updatedWorkout)
+        navigate('/workouts') // maybe change so the modal is showing on the workout page
     }
 
     return (
@@ -69,16 +86,18 @@ const EditWorkout = ({ onUpdateWorkout }) => {
                         <label key={index} style={{ margin: "0 10px" }}>
                             <input 
                                 type="radio" 
+                                name="icon"
                                 value={icon.iconName} 
-                                checked={selectedIcon === icon} 
-                                onChange={() => setSelectedIcon(icon)} 
+                                checked={selectedIcon === icon.iconName} 
+                                onChange={() => setSelectedIcon(icon.iconName)} 
                             />
-                            <FontAwesomeIcon icon={icon} size="2x" />
+                            <FontAwesomeIcon icon={icon.icon} size="2x" />
                         </label>
                     ))}
                 </div>
                 <button
                     onClick={handleSave}
+                    disabled={!workoutName ||!selectedExercises.length || !selectedIcon}
                     style={{
                         marginTop: "20px",
                         padding: "10px",
@@ -115,4 +134,3 @@ const EditWorkout = ({ onUpdateWorkout }) => {
 
 export default EditWorkout
 
-// change so that after editing it goes back to the workout info page

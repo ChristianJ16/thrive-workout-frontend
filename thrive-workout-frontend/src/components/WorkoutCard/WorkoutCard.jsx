@@ -1,15 +1,23 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useEffect, useState } from "react"
 import './WorkoutCard.scss'
 
-const WorkoutCard = ({ workout, onSelectWorkout }) => {
-    const [icon, setIcon] = useState(workout.icon)
-    
+import { faDumbbell, faStopwatch20, faHeartPulse, faPersonRunning, faHeart, faPersonBiking, faHeadphones, faWeight } from "@fortawesome/free-solid-svg-icons"
 
-    useEffect(() => {
-        setIcon(workout.icon)
-    }, [workout])
-    
+
+const iconMap = {
+    dumbbell: faDumbbell,
+    stopwatch20: faStopwatch20,
+    heartPulse: faHeartPulse,
+    personRunning: faPersonRunning,
+    heart: faHeart,
+    personBiking: faPersonBiking,
+    headphones: faHeadphones,
+    weight: faWeight
+}
+
+
+const WorkoutCard = ({ workout, onSelectWorkout }) => {
+    const icon = iconMap[workout.icon] 
 
     return (
         <div className="WorkoutCard" onClick={() => onSelectWorkout(workout)}>

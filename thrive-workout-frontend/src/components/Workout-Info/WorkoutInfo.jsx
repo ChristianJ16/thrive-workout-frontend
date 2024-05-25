@@ -8,6 +8,7 @@ const WorkoutInfo = ({ workout, onClose, onDeleteWorkout }) => {
     const [selectedExercise, setSelectedExercise] = useState(null)
 
     const handleDelete = () => {
+        console.log("Deleting workout with ID: ", workout._id)
         onDeleteWorkout(workout)
         onClose()
     }
