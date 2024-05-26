@@ -1,9 +1,13 @@
 import {useState} from 'react'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
-import "./SignUp.scss"
+import "./LoginSignUp.scss"
 
 const SignUp = (props) => {
+    const navigate = useNavigate()
+
+    const [success, setSuccess] = useState('')
 
     const [newUser, setNewUser] = useState({
         firstName: '',
@@ -22,16 +26,26 @@ const SignUp = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         props.createUser(newUser)
+        setSuccess(true)
+        setTimeout(()=>{
+            navigate('/login')
+            setSuccess(false)
+        }, 3000)
+       
     }
 
     return (
         <section className="tw-sign-up--container">
-                <div className="tw-sign-up">
+                {
+                success ? 
+                    <h3 className="tw-sign-up-success">Thanks for signing up!<br/>You will now be redirecterd to the login page.</h3>
+                    :
+                    <div className="tw-sign-up">
                     <h2>Sign Up</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="tw-sign-up--name">
                             <label>
-                                First Name
+                                First Name:*
                                 <input 
                                     type="text"
                                     id="tw-sign-up--name__first-name"
@@ -51,7 +65,12 @@ const SignUp = (props) => {
                             </label>
                         </div>
                         <label>
-                            Email*
+                            Email:*
+                            {props.toggleError ?
+                            <h5 className='errorMsg'>{props.errorMessage}</h5>
+                                :
+                                null
+                            }
                             <input 
                                 type="email"
                                 id="tw-sign-up--email"
@@ -80,6 +99,7 @@ const SignUp = (props) => {
                         </Link> */}
                     </form>
                 </div>
+                }
         </section>
     )
 }

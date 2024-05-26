@@ -9,6 +9,7 @@ import AddWorkout from './pages/Add-Workout/AddWorkout'
 import EditWorkout from './pages/Edit-Workout/EditWorkout'
 import Header from './components/header/Header'
 import Register from './components/Register'
+import Login from './components/Login'
 
 // Imports for API calls
 import fetchExercises from './services/ExerciseAPI'
@@ -20,6 +21,8 @@ function App() {
     const [exercises, setExercises] = useState([])
     const [workouts, setWorkouts] = useState([])
     const navigate = useNavigate()
+
+    const [currentUser, setCurrentUser] = useState(null)
 
     useEffect(() => {
         const loadExercises = async () => {
@@ -65,6 +68,11 @@ function App() {
         //show search
     }
 
+    const handleLoginSuccess = (user) => {
+        setCurrentUser(user)
+        navigate('/')
+    }
+
     return (
         <div className="App">
 
@@ -75,6 +83,10 @@ function App() {
 
             <Register />
 
+            <Login onLoginSuccess={handleLoginSuccess}/>
+            {/* {
+                currentUser ? console.log("currentUser app:",currentUser) : console.log("no currentUser")
+            } */}
             <Routes>
                 <Route path="/" element={<Home exercises={exercises} />} />
                 <Route 

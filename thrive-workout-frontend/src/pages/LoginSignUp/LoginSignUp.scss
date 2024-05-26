@@ -1,19 +1,26 @@
 $foreground: #002e5a;
 $background: #fff;
+$error: #f88078;
 
 $gap: 25px;
 
-.tw-sign-up--container{
+.tw-sign-up--container,
+.tw-login--container{
     min-width: 280px;
     width: 100vw;
     background-color: $background;
     color: $foreground;
-
-
-
-
-      .tw-sign-up{
-        
+    .tw-sign-up-success{
+        text-align: center;
+        min-height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 2rem;
+    }
+      .tw-sign-up-success,
+      .tw-sign-up,
+      .tw-login{
 
         padding: 0 20px 30px;
         max-width: 514px;
@@ -23,6 +30,10 @@ $gap: 25px;
         border: 1px solid #ccc;
 
         // transform: translateY(-10%);
+        h5{
+            color: $error;
+        }
+        
         label{
             display: block;
             margin-top: $gap;
@@ -66,8 +77,8 @@ $gap: 25px;
 
         &--name{
             display: flex;
-            gap: $gap;
-            & > label {
+            gap: 4%;
+            & label {
                 width: 48%;
             }
         }
