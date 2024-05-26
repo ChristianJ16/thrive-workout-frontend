@@ -66,24 +66,20 @@ const EditWorkout = ({ onUpdateWorkout }) => {
     }
 
     return (
-        <div className="EditWorkout" style={{ padding: "20px" }}>
+        <div className="EditWorkout">
             <h1>Edit Workout</h1>
             <div className='saveWorkout'>
                 <input
+                    className='workoutName'
                     type="text"
                     value={workoutName}
                     onChange={(e) => setWorkoutName(e.target.value)}
                     placeholder="Enter Workout Name"
-                    style={{
-                        fontSize: "18px",
-                        width: "100%",
-                        padding: "5px",
-                        margin: "10px 0",
-                    }} />
-                <div>
+                />
+                <div className='iconContainer'>
                     <h3>Select an Icon:</h3>
                     {icons.map((icon, index) => (
-                        <label key={index} style={{ margin: "0 10px" }}>
+                        <label key={index}>
                             <input 
                                 type="radio" 
                                 name="icon"
@@ -98,15 +94,7 @@ const EditWorkout = ({ onUpdateWorkout }) => {
                 <button
                     onClick={handleSave}
                     disabled={!workoutName ||!selectedExercises.length || !selectedIcon}
-                    style={{
-                        marginTop: "20px",
-                        padding: "10px",
-                        backgroundColor: "blue",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "5px",
-                        cursor: "pointer",
-                    }} > Save </button>
+                > Save </button>
             </div>
             <div>
                 <h3>Exercises:</h3>
