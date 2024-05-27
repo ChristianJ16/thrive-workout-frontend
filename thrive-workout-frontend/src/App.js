@@ -74,6 +74,10 @@ function App() {
         navigate('/login')
     }
 
+    useEffect( ()=>{
+        if(!currentUser)navigate("/login")
+    }, [] )
+
     return (
         <div className="App">
 
@@ -84,36 +88,27 @@ function App() {
                 onLogout={handleLogout} 
                 logoLink={currentUser ? "/" : "/login"}
                 />
+        
+                <Register />
 
+                <Login onLoginSuccess={handleLoginSuccess}/>
             
-            {
-                !currentUser ?
-                    <>
-                        <Register />
-
-                        <Login onLoginSuccess={handleLoginSuccess}/>
-                    </>
-                :
-
-                <>
-                    <Routes>
-                        <Route path="/" element={<Home exercises={exercises} />} />
-                        <Route 
-                            path="/workouts" 
-                            element={
-                                <Workouts 
-                                    workouts={workouts}
-                                    onUpdateWorkout={handleUpdateWorkout}
-                                    onDeleteWorkout={handleDeleteWorkout}
-                                />} />
-                        <Route 
-                            path="/addWorkout" 
-                            element={<AddWorkout onAddWorkout={handleAddWorkout} />} />
-                        <Route path="/editWorkout/:id" element={<EditWorkout onUpdateWorkout={handleUpdateWorkout} />} />
-                    </Routes>
-                </>
-                
-            }
+                <Routes>
+                    <Route path="/" element={<Home exercises={exercises} />} />
+                    <Route 
+                        path="/workouts" 
+                        element={
+                            <Workouts 
+                                workouts={workouts}
+                                onUpdateWorkout={handleUpdateWorkout}
+                                onDeleteWorkout={handleDeleteWorkout}
+                            />} />
+                    <Route 
+                        path="/addWorkout" 
+                        element={<AddWorkout onAddWorkout={handleAddWorkout} />} />
+                    <Route path="/editWorkout/:id" element={<EditWorkout onUpdateWorkout={handleUpdateWorkout} />} />
+                </Routes>
+             
 
             
         </div>
