@@ -1,11 +1,9 @@
 import {useState} from 'react'
 // import {Link} from 'react-router-dom'
-import { useNavigate, useParams } from 'react-router-dom'
-
 import "./LoginSignUp.scss"
 
 const SignUp = (props) => {
-    const navigate = useNavigate()
+    
 
     const [success, setSuccess] = useState('')
 
@@ -26,18 +24,12 @@ const SignUp = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         props.createUser(newUser)
-        setSuccess(true)
-        setTimeout(()=>{
-            navigate('/login')
-            setSuccess(false)
-        }, 3000)
-       
     }
-
+    
     return (
         <section className="tw-sign-up--container">
                 {
-                success ? 
+                props.userCreated ? 
                     <h3 className="tw-sign-up-success">Thanks for signing up!<br/>You will now be redirecterd to the login page.</h3>
                     :
                     <div className="tw-sign-up">

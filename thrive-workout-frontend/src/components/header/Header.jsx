@@ -14,31 +14,44 @@ const Header = (props) => {
             <a href="/"><h1>{props.name}</h1></a>
            
             <div className="tw-main-header--content-right">
-                <nav>
-                {props.links.map( (link, i) => {
-                    
-                    // if(location.pathname !== "/"+link){
-                        return(
-                            <Link className="header_nav_item" key={i} to={link}>
-                                {link}
-                            </Link>
-                        )
-                    // }
-                })}
-                </nav>
+                {
+                    props.showNav ?
+                    <>
+                        <nav className="tw-main-nav">   
+                        {                    
+                            props.links.map( (link, i) => {  
+                                return(
+                                    <Link className="header_nav_item" key={i} to={link}>
+                                        {link}
+                                    </Link>
+                                )
+                            })
+                        }    
+                        </nav>
 
-                { location.pathname === "/" && 
-                   <button type='button' onClick={props.showSearch}>
-                        <FontAwesomeIcon icon={ faMagnifyingGlass } size="2x"  /> 
-                    </button> }
+                        <div className="tw-main-header--profile-image">
+                            <FontAwesomeIcon icon={ faCircleUser } size="4x"  />
+                        </div>
 
-                <div className="tw-main-header--profile-image">
-                    <FontAwesomeIcon icon={ faCircleUser } size="4x"  />
-                </div>
+                        {/* wrap in link to UserSettings */}
+                        <FontAwesomeIcon icon={ faGear } size="xl"  />
 
-                {/* wrap in link to UserSettings */}
-                <FontAwesomeIcon icon={ faGear } size="xl"  />
-
+                        <button type="button" onClick={props.onLogout}>
+                            Logout
+                        </button>
+                    </>
+                    :
+                    <nav className="tw-login-sign-up-nav">
+                        <Link className="new"  to="/sign-up">
+                            Sign Up
+                        </Link>
+                        |
+                        <Link className="new"  to="/login">
+                            Login
+                        </Link>
+                    </nav>
+         
+                }
             </div>
                   
         </header>

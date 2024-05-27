@@ -1,4 +1,5 @@
 import {Routes, Route} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import {useState} from 'react'
 
 import SignUp from '../pages/LoginSignUp/SignUp'
@@ -6,8 +7,12 @@ import SignUp from '../pages/LoginSignUp/SignUp'
 const URL = `${process.env.REACT_APP_BACKEND_URL}/users/`
 
 const Register = (props) => {
-   const [toggleError, setToggleError] = useState(false)
-   const [errorMessage, setErrorMessage] = useState('')
+    const navigate = useNavigate()
+
+    const [toggleError, setToggleError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
+
+    const [userCreated, setUserCreated] = useState(false)
     // // getPeople from our API 
     // const getUser = async () => {
     //     const response = await fetch(URL)
@@ -27,24 +32,27 @@ const Register = (props) => {
         })
         const createdUser = await response.json()
         if(createdUser.errorResponse){
-            console.log("error")
 
             const error = createdUser.errorResponse.code === 11000 ? "Email already in use" : "Something went wrong. Please try again later"
 
             setToggleError(true)
             setErrorMessage(error)
+            setUserCreated(false)
         }else{
             setToggleError(false)
             setErrorMessage('')
+            setUserCreated(true)
+            setTimeout(()=>{
+                navigate('/login')
+            }, 3000)
         }
-        //redirect
     } 
 
 
     return (
         <main>
             <Routes>
-                <Route path='/sign-up' element={<SignUp createUser={createUser} toggleError={toggleError} errorMessage={errorMessage} />}/>
+                <Route path='/sign-up' element={<SignUp createUser={createUser} userCreated={userCreated} toggleError={toggleError} errorMessage={errorMessage} />}/>
             </Routes>
         </main>
     )

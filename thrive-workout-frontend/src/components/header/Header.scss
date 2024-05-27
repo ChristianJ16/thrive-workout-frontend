@@ -21,7 +21,7 @@ a{
         font-weight: 900;
         letter-spacing: -2.5px;
         font-style: italic;
-       
+        
         span{
             display: block;
             font-size: 33px;
@@ -41,7 +41,7 @@ a{
         // justify-content: center;
         align-items: center;
         gap: 20px;
-        nav{
+        .tw-main-nav{
             margin-right: 25px;
             a{
                 // width: 50px;
@@ -53,6 +53,14 @@ a{
                 font-weight: 600;
                 color: $darkColor;
                 
+            }
+        }
+
+        .tw-login-sign-up-nav{
+            a{
+                text-decoration: underline;
+                text-underline-offset: 4px;
+                margin: 0 15px;
             }
         }
         button{

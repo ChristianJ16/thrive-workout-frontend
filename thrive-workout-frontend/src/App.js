@@ -22,7 +22,7 @@ function App() {
     const [workouts, setWorkouts] = useState([])
     const navigate = useNavigate()
 
-    const [currentUser, setCurrentUser] = useState(null)
+    const [currentUser, setCurrentUser] = useState( null )
 
     useEffect(() => {
         const loadExercises = async () => {
@@ -64,13 +64,14 @@ function App() {
         }
     }
 
-    const handleShowSearch = () => {
-        //show search
-    }
-
     const handleLoginSuccess = (user) => {
         setCurrentUser(user)
         navigate('/')
+    }
+
+    const handleLogout = (user) => {
+        setCurrentUser( null )
+        navigate('/login')
     }
 
     return (
@@ -79,14 +80,13 @@ function App() {
             <Header
                 name={ <>THRIVE<span>workout</span></> } 
                 links={["workouts"]}
-                showSearch={handleShowSearch} />
+                showNav={ currentUser ? true : false }
+                onLogout={handleLogout} />
 
             <Register />
 
             <Login onLoginSuccess={handleLoginSuccess}/>
-            {/* {
-                currentUser ? console.log("currentUser app:",currentUser) : console.log("no currentUser")
-            } */}
+
             <Routes>
                 <Route path="/" element={<Home exercises={exercises} />} />
                 <Route 
