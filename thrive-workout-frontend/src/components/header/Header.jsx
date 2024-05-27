@@ -8,10 +8,16 @@ import { faMagnifyingGlass, faCircleUser, faGear } from '@fortawesome/free-solid
 import "./Header.scss"
 
 const Header = (props) => {
+
     const location = useLocation();
+
+
     return (
         <header className="tw-main-header">
-            <a href="/"><h1>{props.name}</h1></a>
+            
+            <Link to={props.logoLink}>
+                <h1>{props.name}</h1>
+            </Link>
            
             <div className="tw-main-header--content-right">
                 {

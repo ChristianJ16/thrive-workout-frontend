@@ -81,7 +81,9 @@ function App() {
                 name={ <>THRIVE<span>workout</span></> } 
                 links={["workouts"]}
                 showNav={ currentUser ? true : false }
-                onLogout={handleLogout} />
+                onLogout={handleLogout} 
+                logoLink={currentUser ? "/" : "/login"}
+                />
 
             
             {
