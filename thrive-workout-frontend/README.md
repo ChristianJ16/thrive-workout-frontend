@@ -83,10 +83,10 @@ Thrive Workout is an interactive fitness planning app designed to help users cre
   - Created wireframes to visualize our idea
   - Broke down the project into sections and assigned each one to a specific person in the group
   - Set up Jira to keep track of progress with group
-  - Set up frontend and backend
+  - Set up frontend files and backend routes
   - Set up meeting days with our group to discuss progress and merge our work
   - Focused on website functionality first and once MVP was met, SCSS was applied
-  - Deployed project
+  - Deploy project
 
   #
 
