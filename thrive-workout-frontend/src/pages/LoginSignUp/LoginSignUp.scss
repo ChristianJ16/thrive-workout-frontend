@@ -1,5 +1,6 @@
-$foreground: #002e5a;
+$foreground: rgb(10, 15, 57);
 $background: #fff;
+$secondary: rgb(105, 172, 216);
 $error: #f88078;
 
 $gap: 25px;
@@ -26,9 +27,10 @@ $gap: 25px;
         max-width: 514px;
     
         margin: 120px auto 0;
-                
-        border: 1px solid #ccc;
-
+        border: 1px solid #ddd;
+        // border: .25px solid transparent;
+        // box-shadow: 0px 0px 8px #ddd;
+        border-radius: 5px;
         // transform: translateY(-10%);
         h5{
             color: $error;
@@ -72,6 +74,12 @@ $gap: 25px;
                 background-color: $foreground;
                 color: $background;
                 margin: $gap 0;
+                cursor: pointer;
+                transition: all .1s ease-in-out;
+                &:hover{
+                    color: $secondary;
+                    box-shadow: 0px 0px 8px #ddd;
+                }
             }
         }
 

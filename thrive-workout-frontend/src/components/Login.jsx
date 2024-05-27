@@ -62,7 +62,7 @@ const Login = (props) => {
     return (
         <main>
             <Routes>
-                <Route path='/login' element={<LoginPage handleLogin={handleLogin} toggleError={toggleError} errorMessage={errorMessage} />}/>
+                <Route path='*' element={<LoginPage handleLogin={handleLogin} toggleError={toggleError} errorMessage={errorMessage} />}/>
             </Routes>
         </main>
     )
