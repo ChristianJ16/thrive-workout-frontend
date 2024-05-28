@@ -1,0 +1,149 @@
+$foreground: rgb(10, 15, 57);
+$background: #fff;
+$secondary: rgb(105, 172, 216);
+$error: #f88078;
+
+$gap: 25px;
+
+.tw-user-profile--container{
+
+    width: 100vw;
+
+    box-sizing: border-box;
+    padding: 0 20px;
+
+    background-color: $background;
+    color: $foreground;
+
+    // .tw-sign-up-success{
+    //     text-align: center;
+    //     min-height: 300px;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     line-height: 2rem;
+    // }
+    .tw-user-profile{
+
+        display: flex;
+
+        padding: 0 20px 30px;
+        max-width: 514px;
+    
+        margin: 120px auto 0;
+        // border: 1px solid #ddd;
+        // border: .25px solid transparent;
+        box-shadow: 0px 0px 8px #ddd;
+        border-radius: 5px;
+        // transform: translateY(-10%);
+
+        min-height: 500px;
+
+        
+        // justify-content: center;
+        
+        &--info{
+
+            width: 100%;
+            min-height: 100%;
+
+            box-sizing: border-box;
+            padding: 0 10%;
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            
+            button{
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                border: none;
+                background: none;
+                text-decoration: underline;
+                text-underline-offset: 2px;
+                cursor: pointer;
+                color: $foreground;
+                // align-self: flex-start;
+            }
+            &-inner{
+                width: 100%;
+                h3 span{
+                    margin-right: 20px;
+                }
+                &__name{
+                    font-size: 2rem;
+                    text-align: center;
+                }
+            }
+        }
+        &--edit-form{
+            &,   
+            form{
+                width: 100%;
+            }
+            form{
+                label{
+                    display: block;
+                    margin-top: $gap;
+                }   
+                input[type="number"] {
+                    -moz-appearance: textfield;
+                }
+                input[type="number"]::-webkit-outer-spin-button,
+                input[type="number"]::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+                
+                input{
+                    &[type="text"],
+                    &[type="number"],
+                    &[type="email"],
+                    &[type="password"],
+                    &[type="submit"]{
+
+                        display: flex;
+                        box-sizing: border-box;
+                        // align-items: center;
+                        
+                        width: 100%;
+                        height: 40px;
+
+                        margin-top: 7px;
+                        padding: 0 15px;
+
+                        border: none;
+                        border-radius: 10px;
+                        background-color: $background;
+                        box-shadow: 0px 0px 8px #ddd;
+
+                        font-family: Arial;
+                        font-size: 1rem;
+                        color: $foreground;
+
+                        &:focus{
+                            outline: 1.25px solid #ddd;
+                        }
+                    }
+                }
+                input{
+                    &[type="submit"]{
+                        background-color: $foreground;
+                        color: $background;
+                        margin: $gap 0;
+                        cursor: pointer;
+                        transition: all .1s ease-in-out;
+                        &:hover{
+                            color: $secondary;
+                            box-shadow: 0px 0px 8px #ddd;
+                        }
+                    }
+                }
+            }
+           
+            
+        }
+
+      }
+   
+}
