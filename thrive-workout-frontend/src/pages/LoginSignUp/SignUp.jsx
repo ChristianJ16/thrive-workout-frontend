@@ -3,9 +3,6 @@ import {useState} from 'react'
 import "./LoginSignUp.scss"
 
 const SignUp = (props) => {
-    
-
-    const [success, setSuccess] = useState('')
 
     const [newUser, setNewUser] = useState({
         firstName: '',
@@ -15,6 +12,7 @@ const SignUp = (props) => {
     })
 
     const handleChange = (event) => {
+        console.log("handleChange")
         setNewUser(prev => ({
             ...prev,
             [event.target.name]: event.target.value

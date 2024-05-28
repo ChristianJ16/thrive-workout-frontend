@@ -15,13 +15,13 @@ const Header = (props) => {
     return (
         <header className="tw-main-header">
             
-            <Link to={props.logoLink}>
+            <Link to={ props.currentUser ? "/" : "/login" }>
                 <h1>{props.name}</h1>
             </Link>
            
             <div className="tw-main-header--content-right">
                 {
-                    props.showNav ?
+                    props.currentUser ?
                     <>
                         <nav className="tw-main-nav">   
                         {                    
@@ -35,12 +35,13 @@ const Header = (props) => {
                         }    
                         </nav>
 
-                        <div className="tw-main-header--profile-image">
+                        {/* <div className="tw-main-header--profile-image">
                             <FontAwesomeIcon icon={ faCircleUser } size="4x"  />
-                        </div>
+                        </div> */}
 
-                        {/* wrap in link to UserSettings */}
-                        <FontAwesomeIcon icon={ faGear } size="xl"  />
+                        <Link to={ `/user/${props.currentUser.id}` }>
+                            <FontAwesomeIcon icon={ faGear } size="xl"  />
+                        </Link>                        
 
                         <button type="button" onClick={props.onLogout}>
                             Logout

@@ -56,7 +56,7 @@ const Login = (props) => {
                     :
                     null
                 }
-                <input type="Submit" value="Login" readOnly />
+                <input type="Submit" value="Log In" readOnly />
                 {/* <Link to={`sign-in/`}>
                     signin
                 </Link> */}

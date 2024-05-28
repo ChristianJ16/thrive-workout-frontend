@@ -7,10 +7,16 @@ $gap: 25px;
 
 .tw-sign-up--container,
 .tw-login--container{
-    min-width: 280px;
+
     width: 100vw;
+
+    box-sizing: border-box;
+    padding: 0 20px;
+
     background-color: $background;
     color: $foreground;
+
+
     .tw-sign-up-success{
         text-align: center;
         min-height: 300px;
@@ -86,44 +92,17 @@ $gap: 25px;
         &--name{
             display: flex;
             gap: 4%;
+            
             & label {
                 width: 48%;
             }
+            @media (max-width: 400px){
+                display: block;
+                & label {
+                    width: 100%;
+                }
+            }
         }
       }
-    //   .container .content img{
-    //     width: 100%;
-    //     height: auto;
-    //   }
-    //   .container .content p{
-    //     font-size: 4vw;
-    //     text-transform: uppercase;
-    //     padding: 26px 0;
-    //   }
-    //   .container .content a{
-    //     font-size: 3.5vw;
-    //     color: #002e5a;
-    //     text-decoration: none;
-    //   }
-      
-    //   @media all and (max-width: 280px){
-    //     .container .content p{
-    //       font-size: 11px;
-    //     }
-    //     .container .content a{
-    //       font-size: 11px;
-          
-    //     }
-    //   }
-      
-    //   @media all and (min-width: 530px){
-    //     .container .content p{
-    //       font-size: 22px;
-    //       padding: 36px 0;
-    //     }
-    //     .container .content a{
-    //       font-size: 20px;
-          
-    //     }
-    //   }
+   
 }

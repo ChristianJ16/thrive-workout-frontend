@@ -50,11 +50,9 @@ const Register = (props) => {
 
 
     return (
-        <main>
             <Routes>
                 <Route path='/sign-up' element={<SignUp createUser={createUser} userCreated={userCreated} toggleError={toggleError} errorMessage={errorMessage} />}/>
             </Routes>
-        </main>
     )
 }
 

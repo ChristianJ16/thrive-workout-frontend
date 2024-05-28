@@ -10,6 +10,7 @@ import EditWorkout from './pages/Edit-Workout/EditWorkout'
 import Header from './components/header/Header'
 import Register from './components/Register'
 import Login from './components/Login'
+import UserSettings from './pages/UserSettings/UserSettings'
 
 // Imports for API calls
 import fetchExercises from './services/ExerciseAPI'
@@ -74,9 +75,9 @@ function App() {
         navigate('/login')
     }
 
-    useEffect( ()=>{
-        if(!currentUser)navigate("/login")
-    }, [] )
+    // useEffect( ()=>{
+    //     if(!currentUser)navigate("/login")
+    // }, [] )
 
     return (
         <div className="App">
@@ -84,15 +85,15 @@ function App() {
             <Header
                 name={ <>THRIVE<span>workout</span></> } 
                 links={["workouts"]}
-                showNav={ currentUser ? true : false }
+                currentUser={ currentUser }
                 onLogout={handleLogout} 
-                logoLink={currentUser ? "/" : "/login"}
                 />
         
                 <Register />
 
+
                 <Login onLoginSuccess={handleLoginSuccess}/>
-            
+
                 <Routes>
                     <Route path="/" element={<Home exercises={exercises} />} />
                     <Route 
@@ -107,6 +108,8 @@ function App() {
                         path="/addWorkout" 
                         element={<AddWorkout onAddWorkout={handleAddWorkout} />} />
                     <Route path="/editWorkout/:id" element={<EditWorkout onUpdateWorkout={handleUpdateWorkout} />} />
+
+                    <Route path='/user/:userId' element={<UserSettings />}/>
                 </Routes>
              
 
