@@ -75,10 +75,33 @@ function App() {
         navigate('/login')
     }
 
-    // useEffect( ()=>{
-    //     if(!currentUser)navigate("/login")
-    // }, [] )
 
+    const updateUser = async (user, id) => {
+        await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/` + id, {
+            method: "put",
+            headers: {
+                "Content-Type": "application/json"
+            }, 
+            body: JSON.stringify(user)
+        })
+        getUsers()
+    }
+
+    useEffect( ()=>{
+        if(!currentUser)navigate("/login")
+    }, [] )
+
+    const [users, setUsers] = useState([])
+    const getUsers = async () => {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/`)
+        const data = await response.json()
+        // console.log(data)
+        setUsers(data)
+    }
+
+    useEffect( ()=>{
+        getUsers()
+        }, [] )
     return (
         <div className="App">
 
@@ -109,7 +132,7 @@ function App() {
                         element={<AddWorkout onAddWorkout={handleAddWorkout} />} />
                     <Route path="/editWorkout/:id" element={<EditWorkout onUpdateWorkout={handleUpdateWorkout} />} />
 
-                    <Route path='/user/:id' element={<UserSettings />}/>
+                    <Route path='/user/:id' element={<UserSettings users={users} updateUser={updateUser}/>}/>
                 </Routes>
              
 
