@@ -6,9 +6,9 @@ import "./UserSettings.scss"
 
 const UserSettings = (props) => {
 
-    const { userId } = useParams()
+    const { id } = useParams()
 
-    const URL = `${process.env.REACT_APP_BACKEND_URL}/users/${userId}`
+    const URL = `${process.env.REACT_APP_BACKEND_URL}/users/${id}`
 
     const [editUser, setEditUser] = useState({
         age: 0,

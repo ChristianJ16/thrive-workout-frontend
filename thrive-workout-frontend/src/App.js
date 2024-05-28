@@ -109,7 +109,7 @@ function App() {
                         element={<AddWorkout onAddWorkout={handleAddWorkout} />} />
                     <Route path="/editWorkout/:id" element={<EditWorkout onUpdateWorkout={handleUpdateWorkout} />} />
 
-                    <Route path='/user/:userId' element={<UserSettings />}/>
+                    <Route path='/user/:id' element={<UserSettings />}/>
                 </Routes>
              
 
