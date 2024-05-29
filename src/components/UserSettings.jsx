@@ -16,9 +16,9 @@ const UserSettings = (props) => {
 
     const [ currentUser, setCurrentUser ] = useState( null )
 
-    const getUser = async (URL) => {
+    const getUser = async (userURL) => {
 
-        const response = await fetch(URL)
+        const response = await fetch(userURL)
         const user =  await response.json()
         console.log("user: ", user)
 
@@ -26,12 +26,9 @@ const UserSettings = (props) => {
     }
 
     useEffect(() => {
-        getUser()
-    }, [])
+        getUser(URL)
+    }, [URL])
   
-    
-
-
 
     return (
         <main>

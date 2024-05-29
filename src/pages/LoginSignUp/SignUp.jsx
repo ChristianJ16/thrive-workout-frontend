@@ -12,7 +12,6 @@ const SignUp = (props) => {
     })
 
     const handleChange = (event) => {
-        console.log("handleChange")
         setNewUser(prev => ({
             ...prev,
             [event.target.name]: event.target.value
