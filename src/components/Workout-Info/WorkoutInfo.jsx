@@ -7,8 +7,6 @@ import fetchExercises from "../../services/ExerciseAPI"
 const WorkoutInfo = ({ workout, onClose, onDeleteWorkout }) => {
     const navigate = useNavigate()
     const [selectedExercise, setSelectedExercise] = useState(null)
-
-
     const [exerciseData, setExerciseData] = useState([])
 
     const fetchData = async () => {
@@ -29,8 +27,9 @@ const WorkoutInfo = ({ workout, onClose, onDeleteWorkout }) => {
     }
 
     const handleDelete = () => {
+        const token = localStorage.getItem('token')
         console.log("Deleting workout with ID: ", workout._id)
-        onDeleteWorkout(workout)
+        onDeleteWorkout(workout._id, token)
         onClose()
     }
     const handleEdit = () => {

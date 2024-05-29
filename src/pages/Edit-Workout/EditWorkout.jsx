@@ -18,7 +18,7 @@ const icons = [
     { iconName: 'weight', icon: faWeight }
 ]
 
-const EditWorkout = ({ onUpdateWorkout }) => {
+const EditWorkout = ({ onUpdateWorkout, currentUser }) => {
     const navigate = useNavigate() 
     const location = useLocation() // used useLocation hook to access the location object passed from the Workouts component page
     const { workout } = location.state // destructured the workout object from location.state and assigned it to workout variable
@@ -55,14 +55,16 @@ const EditWorkout = ({ onUpdateWorkout }) => {
     }
 
     const handleSave = () => {
+        const token = localStorage.getItem('token')
         const updatedWorkout = {
             ...workout,
+            // userId: currentUser.id,
             name: workoutName,
             exercises: selectedExercises,
             icon: selectedIcon,
         }
-        onUpdateWorkout(updatedWorkout)
-        navigate('/workouts') // maybe change so the modal is showing on the workout page
+        onUpdateWorkout(workout._id, updatedWorkout, token)
+        navigate('/workouts') 
     }
 
     return (

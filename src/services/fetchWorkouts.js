@@ -1,12 +1,24 @@
 const fetchWorkouts = async () => {
-  try {
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/workouts/`)
-    if (!response.ok) {
-      throw new Error('Failed to fetch workouts');
+    const token = localStorage.getItem('token')
+    if (!token) {
+      console.error('Token is not available')
+      return []
     }
-    return response.json()
+    try {
+      const response = await fetch('http://localhost:4000/workouts/', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+      })
+      if (!response.ok) {
+        throw new Error('Failed to fetch workouts')
+      }
+      return await response.json()
   } catch (error) {
-    console.log('Error fetching workouts', error)
+    console.error('Error fetching workouts', error)
     return []
   }
 }

@@ -19,7 +19,7 @@ const icons = [
 ]
 
 
-const AddWorkout = ({ onAddWorkout }) => {
+const AddWorkout = ({ onAddWorkout, currentUser }) => {
     const [workoutName, setWorkoutName] = useState('')
     const [selectedExercises, setSelectedExercises] = useState([])
     const [exercises, setExercises] = useState([])
@@ -74,18 +74,25 @@ const AddWorkout = ({ onAddWorkout }) => {
 
     // add a new workout by calling the 'onAddWorkout' function passed as a prop from parent 
     const handleSave = async () => {
-        if (!isFormValid) {
+        if (!isFormValid || !currentUser) {
             console.error('Form is invalid')
             return
         }
+        const token = localStorage.getItem('token')
         const newWorkout = {
+            // userId: currentUser.id,
             name: workoutName,
             exercises: selectedExercises,
             icon: selectedIcon
         }
-        const savedWorkout = await saveWorkout(newWorkout)
-        if (savedWorkout) {
-            onAddWorkout(savedWorkout)
+        try {
+            const savedWorkout = await saveWorkout(newWorkout, token)
+            if (savedWorkout) {
+                onAddWorkout(savedWorkout)
+                console.log('Saved workout:', savedWorkout)
+            }
+        } catch (error) {
+            console.error('Failed to save workout:', error)
         }
     }
 
@@ -189,5 +196,3 @@ const AddWorkout = ({ onAddWorkout }) => {
     )
 }
 export default AddWorkout
-
-// "Only one radio button in a given group can be selected at the same time. Radio buttons are typically rendered as small circles, which are filled or highlighted when selected." -mdn web docs

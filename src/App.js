@@ -34,12 +34,17 @@ function App() {
     }, [])
 
     useEffect(() => {
-        const loadWorkouts = async () => {
-            const workoutsData = await fetchWorkouts()
-            setWorkouts(workoutsData)
+        console.log("Current user in App:", currentUser)
+        if (currentUser && currentUser.id){
+            const loadWorkouts = async () => {
+                console.log("Fetching workouts for user ID:", currentUser.id)
+                const workoutsData = await fetchWorkouts(currentUser.id)
+                console.log("Workouts loaded:", workoutsData)
+                setWorkouts(workoutsData)
+            }
+            loadWorkouts()
         }
-        loadWorkouts()
-    }, [])
+    }, [currentUser])
     
 
     const handleAddWorkout = (newWorkout) => {
@@ -48,7 +53,8 @@ function App() {
     }
 
     const handleUpdateWorkout = async (updatedWorkout) => {
-        const result = await updateWorkout(updatedWorkout._id, updatedWorkout)
+        const token = localStorage.getItem('token')
+        const result = await updateWorkout(updatedWorkout._id, updatedWorkout, token)
         if (result) {
             setWorkouts(workouts.map(w => w._id === result._id ? result : w))
             navigate('/workouts')
@@ -56,7 +62,8 @@ function App() {
     }
 
     const handleDeleteWorkout = async (workout) => {
-        const result = await deleteWorkout(workout._id)
+        const token = localStorage.getItem('token')
+        const result = await deleteWorkout(workout._id, token)
         if (result) {
             console.log('Deleted workout:', result)
             setWorkouts(workouts.filter(w => w._id !== workout._id))
@@ -66,6 +73,7 @@ function App() {
     }
 
     const handleLoginSuccess = (user) => {
+        console.log("Logged in user:", user)
         setCurrentUser(user)
         navigate('/')
     }
@@ -123,14 +131,15 @@ function App() {
                         path="/workouts" 
                         element={
                             <Workouts 
+                                currentUser={currentUser}
                                 workouts={workouts}
                                 onUpdateWorkout={handleUpdateWorkout}
                                 onDeleteWorkout={handleDeleteWorkout}
                             />} />
                     <Route 
                         path="/addWorkout" 
-                        element={<AddWorkout onAddWorkout={handleAddWorkout} />} />
-                    <Route path="/editWorkout/:id" element={<EditWorkout onUpdateWorkout={handleUpdateWorkout} />} />
+                        element={<AddWorkout currentUser={currentUser} onAddWorkout={handleAddWorkout} />} />
+                    <Route path="/editWorkout/:id" element={<EditWorkout currentUser={currentUser} onUpdateWorkout={handleUpdateWorkout} />} />
 
                     <Route path='/user/:id' element={<UserSettings users={users} updateUser={updateUser}/>}/>
                 </Routes>

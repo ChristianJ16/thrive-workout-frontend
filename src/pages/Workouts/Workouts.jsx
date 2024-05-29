@@ -4,7 +4,7 @@ import WorkoutInfo from '../../components/Workout-Info/WorkoutInfo'
 import { Link, useNavigate } from 'react-router-dom'
 import './Workouts.scss'
 
-const Workouts = ({ workouts, onUpdateWorkout, onDeleteWorkout }) => {
+const Workouts = ({ workouts, onUpdateWorkout, onDeleteWorkout, currentUser }) => {
     const [selectedWorkout, setSelectedWorkout] = useState(null)
     const navigate = useNavigate()
 
