@@ -33,8 +33,10 @@
   all: unset;
   cursor: pointer;
   text-decoration: underline;
+  padding: 20px;
+  color: #fff;
 }
 
 .load-more-button:hover {
-  color: navy;
+  color: rgb(105, 172, 216);
 }
