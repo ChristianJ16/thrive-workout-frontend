@@ -85,11 +85,11 @@
 }
 @media (max-width: 400px) {
   .WorkoutInfo .divElements {
-    padding: 10px; // Adjust padding for very small screens
-    max-width: 95%; // Utilize more of the screen width
+    padding: 10px; 
+    max-width: 95%; 
     .closeBtn, .deleteBtn, .editBtn {
-      padding: 10px 15px; // Adjust button sizing
-      font-size: 15px; // Adjust font size
+      padding: 10px 15px; 
+      font-size: 15px; 
     }
   }
 }
