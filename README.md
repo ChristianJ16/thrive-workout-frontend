@@ -22,8 +22,13 @@
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 ![Adobe Fonts](https://img.shields.io/badge/Adobe%20Fonts-000B1D.svg?style=for-the-badge&logo=Adobe%20Fonts&logoColor=white)
 ![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)
 
-React, SASS, Font Awesome, Netlify, Jira, RapidApi, ExerciseDB
+ Font Awesome, RapidApi, ExerciseDB
 
 #
 
@@ -34,6 +39,11 @@ Thrive Workout is an interactive fitness planning app designed to help users cre
 
 # Deployment Link
 <a href="https://thrive-workout.netlify.app"> Thrive Workout</a>
+
+Heroku URl:
+<a href="https://thrive-workout-bd58f369d22a.herokuapp.com">Backend URL</a>
+
+
 #
 
 # Wireframes
@@ -70,8 +80,9 @@ Thrive Workout is an interactive fitness planning app designed to help users cre
 <ul>
   <li>Figuring out how to optimally work with others on a single project</li>
   <li>Search functionality</li>
-  <li>Making frontend work with backend</li>
-  <li>Login authentication and unique users</li>
+  <li>Integrating Frontend with Backend</li>
+  <li>Login authentication and unique users. We faced challenges implementing JWT, which resulted in our app not supporting user-specific workout management. Currently, any workout created, edited, or deleted is visible across all user accounts.</li>
+  <li>Encountered difficulties with deployment but ultimately resolved. </li>
 </ul>
 
 #
@@ -90,7 +101,7 @@ Thrive Workout is an interactive fitness planning app designed to help users cre
   #
 
 # Future Features
-
+  - Implement solutions to the challenges that have not yet been resolved
   - Integration with Spotify API to generate workout playlists
   - Fitness tracker for logging workout sessions
   - Enhanced user profiles with email verification

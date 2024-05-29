@@ -190,4 +190,3 @@ const AddWorkout = ({ onAddWorkout }) => {
 }
 export default AddWorkout
 
-// "Only one radio button in a given group can be selected at the same time. Radio buttons are typically rendered as small circles, which are filled or highlighted when selected." -mdn web docs
