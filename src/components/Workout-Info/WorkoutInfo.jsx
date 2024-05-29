@@ -56,9 +56,7 @@ const WorkoutInfo = ({ workout, onClose, onDeleteWorkout }) => {
             <div className="divElements">
                 <button onClick={onClose} className="closeBtn">X</button>
                 <div className="workoutDetails">
-                    <h2>Workout Details</h2>
-                    <h3 style={{ fontSize: "22px", margin: "10px 0" }}>{workout.name}</h3>
-                    <button onClick={handleDelete}className="deleteBtn">Delete Workout</button>
+                    <h1>{workout.name}</h1>
                     <div> 
                         <h3>Exercises:</h3>
                         {workout.exercises && workout.exercises.length > 0 ? (
@@ -74,6 +72,7 @@ const WorkoutInfo = ({ workout, onClose, onDeleteWorkout }) => {
                         )}
                     </div>
                     <button onClick={handleEdit} className="editBtn"> Edit Workout </button>
+                    <button onClick={handleDelete}className="deleteBtn">Delete Workout</button>
                 </div>
                     {selectedExercise && (
                         <ExerciseModal
