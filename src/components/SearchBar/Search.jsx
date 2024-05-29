@@ -47,7 +47,7 @@ const Search = ({ exerciseData, onSearch }) => {
         }}type="submit"><FontAwesomeIcon icon={faRightLong} className="search-arrow"/></button>
       </div>
 
-      <ul className="autofill-list">
+      <ul className={ autoFillSuggestions.length > 0 ? "autofill-list show" : "autofill-list"  } >
         {autoFillSuggestions.map((suggestion, index) => (
           <li className="suggested-list" key={index} onClick={() => {
             setSearchQuery(suggestion.name)
