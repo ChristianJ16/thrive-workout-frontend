@@ -83,16 +83,6 @@
     }
   }
 }
-@media (max-width: 400px) {
-  .WorkoutInfo .divElements {
-    padding: 10px; 
-    max-width: 95%; 
-    .closeBtn, .deleteBtn, .editBtn {
-      padding: 10px 15px; 
-      font-size: 15px; 
-    }
-  }
-}
 
 @media (max-width: 600px){
   .WorkoutInfo .divElements {
@@ -105,3 +95,13 @@
   }
 }
 
+@media (max-width: 400px) {
+  .WorkoutInfo .divElements {
+    padding: 10px; 
+    max-width: 95%; 
+    .closeBtn, .deleteBtn, .editBtn {
+      padding: 10px 15px; 
+      font-size: 15px; 
+    }
+  }
+}
