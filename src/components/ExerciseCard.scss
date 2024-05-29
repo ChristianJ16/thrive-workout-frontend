@@ -4,9 +4,11 @@
 }
 
 .ExerciseCard {
-  border-style: solid;
+  border: none;
+  // border-style: solid;
   height: 280px;
-  box-shadow: 0px 0px 15px #ddd;
+  background-color: #fff;
+  // box-shadow: 0px 0px 15px rgb(66, 140, 197); ;
   border-radius: 10px;
   transition: transform 0.3s ease;
 }
@@ -16,8 +18,11 @@
 }
 
 .cardGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
   display: grid;
-  grid-template-columns: repeat(4, 260px);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   justify-content: center;
   row-gap: 18px;
   column-gap: 18px;

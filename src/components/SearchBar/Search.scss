@@ -1,3 +1,5 @@
+$background: rgb(24, 27, 69);
+
 .autofill-list {
   list-style-type: none;
   cursor: default;
@@ -22,7 +24,7 @@
   border-radius: 10px;
   height: 2.5rem;
   padding: 0 15px;
-  box-shadow: 0px 0px 8px #ddd;
+  // box-shadow:  5px 5px 10px 2px  rgb(66, 140, 197);
   display: flex;
   align-items: center;
   margin-top: 60px;
@@ -51,7 +53,7 @@
 }
 
 .search-arrow {
-  color: rgb(217, 217, 217);
+  color: $background;
   font-size: 25px;
   cursor: pointer;
 }

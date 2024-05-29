@@ -87,9 +87,9 @@ function App() {
         getUsers()
     }
 
-    useEffect( ()=>{
-        if(!currentUser)navigate("/login")
-    }, [] )
+    // useEffect( ()=>{
+    //     if(!currentUser)navigate("/login")
+    // }, [currentUser, navigate] )
 
     const [users, setUsers] = useState([])
     const getUsers = async () => {
