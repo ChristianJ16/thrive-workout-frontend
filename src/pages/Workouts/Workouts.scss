@@ -8,7 +8,12 @@
     color: white;
     border: none;
     border-radius: 5px;
-    cursor: pointer 
+    font-size: 14px;
+    cursor: pointer;
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 5px 5px 2px 1px rgba(80, 54, 118, 0.826);
+    }
   }
 
   .workoutCardsContainer {
