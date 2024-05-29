@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom'
-// import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear } from '@fortawesome/free-solid-svg-icons'
@@ -9,7 +9,7 @@ import "./Header.scss"
 
 const Header = (props) => {
 
-    // const location = useLocation();
+    const location = useLocation();
 
 
     return (
