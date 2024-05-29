@@ -1,5 +1,5 @@
 .WorkoutCard {
-  border: 1px solid #ccc;
+  border: 3px solid rgb(89 81 144);
   border-radius: 8px;
   padding: 10px;
   margin: 10px;
@@ -9,6 +9,7 @@
   transition: transform 0.3s ease;
   &:hover {
     transform: translateY(-5px);
+    box-shadow: 5px 5px 10px 2px rgba(80, 54, 118, 0.826);
   }
 
   h3 {
