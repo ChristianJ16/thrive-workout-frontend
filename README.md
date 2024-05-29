@@ -1,6 +1,6 @@
 # Thrive Workout
 
-#### Technologies used: 👩‍💻
+#### Technologies used:
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
@@ -18,13 +18,12 @@
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
 ![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)
 ![Mongoose](https://img.shields.io/badge/Mongoose-F04D35?logo=mongoosedotws&logoColor=fff&style=for-the-badge)
-![EJS Badge](https://img.shields.io/badge/EJS-B4CA65?logo=ejs&logoColor=fff&style=for-the-badge)
 ![.ENV Badge](https://img.shields.io/badge/.ENV-ECD53F?logo=dotenv&logoColor=000&style=for-the-badge)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 ![Adobe Fonts](https://img.shields.io/badge/Adobe%20Fonts-000B1D.svg?style=for-the-badge&logo=Adobe%20Fonts&logoColor=white)
 ![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)
 
-React, SASS, Font Awesome, Netlify, Jira, RapidApi, ExerciseDB,
+React, SASS, Font Awesome, Netlify, Jira, RapidApi, ExerciseDB
 
 #
 
@@ -34,7 +33,7 @@ Thrive Workout is an interactive fitness planning app designed to help users cre
 #
 
 # Deployment Link
-<a href=""> Thrive Workout</a>
+<a href="https://thrive-workout.netlify.app"> Thrive Workout</a>
 #
 
 # Wireframes
